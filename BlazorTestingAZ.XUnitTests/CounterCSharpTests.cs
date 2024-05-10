@@ -1,4 +1,4 @@
-namespace BlazorTestingAZ.XUnitTests;
+﻿namespace BlazorTestingAZ.XUnitTests;
 
 /// <summary>
 /// These tests are written entirely in C#.
@@ -6,26 +6,26 @@ namespace BlazorTestingAZ.XUnitTests;
 /// </summary>
 public class CounterCSharpTests : BunitContext
 {
-	[Fact]
-	public void CounterStartsAtZero()
-	{
-		// Arrange
-		var cut = Render<Counter>();
+    [Fact]
+    public void CounterStartsAtZero()
+    {
+        // Arrange
+        var cut = Render<Counter>();
 
-		// Assert that content of the paragraph shows counter at zero
-		cut.Find("p").MarkupMatches("<p>Current count: 0</p>");
-	}
+        // Assert that content of the paragraph shows counter at zero
+        cut.Find("p").MarkupMatches("<p>Current count: 0</p>");
+    }
 
-	[Fact]
-	public void ClickingButtonIncrementsCounter()
-	{
-		// Arrange
-		var cut = Render<Counter>();
+    [Fact]
+    public void ClickingButtonIncrementsCounter()
+    {
+        // Arrange
+        var cut = Render<Counter>();
 
-		// Act - click button to increment counter
-		cut.Find("button").Click();
+        // Act - click button to increment counter
+        cut.Find("button").Click();
 
-		// Assert that the counter was incremented
-		cut.Find("p").MarkupMatches("<p>Current count: 1</p>");
-	}
+        // Assert that the counter was incremented
+        cut.Find("p").MarkupMatches("<p>Current count: 1</p>");
+    }
 }

@@ -1,4 +1,4 @@
-using BlazorTestingAZ.Components;
+﻿using BlazorTestingAZ.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
