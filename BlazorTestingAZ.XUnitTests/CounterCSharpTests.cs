@@ -30,4 +30,20 @@ public class CounterCSharpTests : BunitContext
         // Assert that the counter was incremented
         cut.Find("p").MarkupMatches("<p role=\"status\">Current count: 1</p>");
     }
+
+    [Fact]
+    public void Count_Increments_WhenButtonIsClicked()
+    {
+        // Arrange
+        var cut = Render<Counter>();
+
+        // Act
+        // Role based lookup coming to bUnit soon. Active
+        // worked on by Scott Sauber
+        cut.Find("button").Click();
+
+        // Assert
+        var statusText = cut.Find("[role=status]").TextContent;
+        Assert.Equal("Current count: 1", statusText);
+    }
 }
