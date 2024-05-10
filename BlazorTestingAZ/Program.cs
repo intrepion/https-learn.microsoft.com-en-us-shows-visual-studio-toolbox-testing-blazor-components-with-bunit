@@ -1,6 +1,9 @@
 ﻿using BlazorTestingAZ.Components;
+using BlazorTestingAZ.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<WeatherForecastRepo>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -1,6 +1,6 @@
-﻿namespace BlazorTestingAZ.XUnitTests;
+﻿using BlazorTestingAZ.Components.Pages;
 
-using BlazorTestingAZ.Components.Pages;
+namespace BlazorTestingAZ.XUnitTests;
 
 /// <summary>
 /// These tests are written entirely in C#.
