@@ -1,4 +1,4 @@
-namespace BlazorTestingAZ.Data;
+﻿namespace BlazorTestingAZ.Data;
 
 public class WeatherForecast
 {

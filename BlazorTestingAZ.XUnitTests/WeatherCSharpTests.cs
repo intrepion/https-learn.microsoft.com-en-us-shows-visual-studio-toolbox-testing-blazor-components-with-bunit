@@ -1,4 +1,4 @@
-using BlazorTestingAZ.Components.Pages;
+﻿using BlazorTestingAZ.Components.Pages;
 using BlazorTestingAZ.Data;
 using BlazorTestingAZ.XUnitTests.Helpers;
 
@@ -23,6 +23,22 @@ public class WeatherCSharpTests : BunitContext
         var rows = cut.FindAll("tbody > tr");
 
         // Assert that the counter was incremented
+        Assert.Equal(2, rows.Count);
+    }
+
+    [Fact]
+    public void WeatherForecastTable_LoadsAndDisplaysData_OnPageInitialization_waiting_for_async()
+    {
+        // Arrange
+        Services.AddSingleton<WeatherForecastRepo>(
+            new DelayedStubWeatherForecastRepo(forecastsToReturn: 2));
+
+        var cut = Render<Weather>();
+
+        // Act
+        var rows = cut.WaitForElements("tbody > tr");
+
+        // Assert
         Assert.Equal(2, rows.Count);
     }
 }

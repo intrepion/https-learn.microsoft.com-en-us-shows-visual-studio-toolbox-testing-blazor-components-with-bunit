@@ -5,13 +5,13 @@ using BlazorTestingAZ.Data;
 
 namespace BlazorTestingAZ.XUnitTests.Helpers;
 
-internal class StubWeatherForecastRepo : WeatherForecastRepo
+internal class DelayedStubWeatherForecastRepo : WeatherForecastRepo
 {
     private readonly int forecastsToReturn;
 
-    public StubWeatherForecastRepo(int forecastsToReturn) => this.forecastsToReturn = forecastsToReturn;
+    public DelayedStubWeatherForecastRepo(int forecastsToReturn) => this.forecastsToReturn = forecastsToReturn;
 
-    public override Task<WeatherForecast[]> GetForecasts()
+    public override async Task<WeatherForecast[]> GetForecasts()
     {
         var startDate = DateOnly.FromDateTime(DateTime.Now);
         var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
@@ -25,6 +25,8 @@ internal class StubWeatherForecastRepo : WeatherForecastRepo
             })
             .ToArray();
 
-        return Task.FromResult(forecasts);
+        await Task.Delay(50);
+
+        return forecasts;
     }
 }
